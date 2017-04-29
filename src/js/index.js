@@ -3,17 +3,20 @@
  */
 
 import React, {Component} from 'react';
-import ComponentHeader from './components/header';
-import ComponentFooter from './components/footer';
-import BodyIndex from './components/bodyIndex';
+import PCIndex from './components/pc_index';
+import MobileIndex from './components/mobile_index';
+import MediaQuery from 'react-responsive';
 
 export default class Index extends Component {
     render() {
         return (
             <div>
-                <ComponentHeader/>
-                <BodyIndex/>
-                <ComponentFooter/>
+                <MediaQuery query="(min-device-width: 1224px)">
+                    <PCIndex/>
+                </MediaQuery>
+                <MediaQuery query="(max-device-width: 1224px)">
+                    <MobileIndex/>
+                </MediaQuery>
             </div>
         );
     }

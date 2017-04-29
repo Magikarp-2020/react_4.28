@@ -1,4 +1,4 @@
 // import React from 'react';
-import './css/style.css';
-import 'antd/dist/antd.css';
+import './css/style.scss';
+// import 'antd/dist/antd.css';
 import './js/root';

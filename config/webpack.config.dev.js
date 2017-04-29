@@ -1,5 +1,5 @@
 'use strict';
-
+var path = require('path');
 var autoprefixer = require('autoprefixer');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -77,7 +77,9 @@ module.exports = {
         alias: {
             // Support React Native Web
             // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-            'react-native': 'react-native-web'
+            'react-native': 'react-native-web',
+            images: path.resolve(__dirname, '../src/images/'),
+            src: path.resolve(__dirname, '../src')
         }
     },
 
@@ -111,6 +113,7 @@ module.exports = {
                     // https://github.com/facebookincubator/create-react-app/issues/1713
                     /\.(js|jsx)(\?.*)?$/,
                     /\.css$/,
+                    /\.scss/,
                     /\.json$/,
                     /\.svg$/
                 ],
@@ -119,10 +122,6 @@ module.exports = {
                     limit: 10000,
                     name: 'static/media/[name].[hash:8].[ext]'
                 }
-            },
-            {
-                test: /\.scss$/,
-                loaders: ["style", "css?sourceMap", "sass?sourceMap"]
             },
             // Process JS with Babel.
             {
@@ -147,6 +146,10 @@ module.exports = {
             {
                 test: /\.css$/,
                 loader: 'style!css?importLoaders=1!postcss'
+            },
+            {
+                test: /\.scss$/,
+                loader: 'style!css!sass?importLoaders=1!postcss'
             },
             // JSON is not enabled by default in Webpack but both Node and Browserify
             // allow it implicitly so we also enable it.
