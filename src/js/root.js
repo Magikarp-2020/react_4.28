@@ -4,7 +4,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Index from './index';
-import bodyIndex from './components/bodyIndex.js';
 import {Router, Route, hashHistory } from 'react-router';
 
 export default class Root extends Component {
@@ -12,7 +11,6 @@ export default class Root extends Component {
         return (
             <Router history={hashHistory}>
                 <Route component={Index} path="/"/>
-                <Route component={bodyIndex} path="/a"/>
             </Router>
         );
     }
